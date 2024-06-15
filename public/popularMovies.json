@@ -1,0 +1,43 @@
+[
+    {
+        "ContestName": "Image Design Contests",
+        "id": 1,
+        "rating":9.4,
+        "Image": "https://i.ibb.co/HXH4d4v/aaaaa.webp",
+        "Attempted": 1500,
+        "ContestDescription": "Image design contests invite artists to create visually compelling graphics based on a specific theme or brief."
+    },
+    {
+        "ContestName": " Article Writing",
+        "id": 2,
+        "rating":8.7,
+        "Image": "https://i.ibb.co/34kdp9H/b.jpg",
+        "Attempted": 2000,
+        "ContestDescription": "Article writing involves crafting informative, engaging, and well-structured content tailored to a specific audience."
+    },
+    {
+        "ContestName": " Marketing Strategy",
+        "id": 3,
+        "rating":8.9,
+        "Image": "https://i.ibb.co/SwWYPCN/ccccc.jpg",
+        "Attempted": 1800,
+        "ContestDescription": "A marketing strategy outlines a company's plan to attract and retain customers, leveraging market research."
+    },
+    {
+        "ContestName": "Movie Review",
+        "id": 4,
+        "rating":9.5,
+        "Image": "https://i.ibb.co/wz5DpCm/ccc72c3f5a6538621df47c75419bec5b.jpg",
+        "Attempted": 2200,
+        "ContestDescription": "A movie review offers a critical assessment of a film's plot, direction, acting, and cinematography."
+    },
+    {
+        "ContestName": "Business Idea Concerts",
+        "id": 5,
+        "rating":9.1,
+        "Image": "https://i.ibb.co/D95KZnt/ff.jpg",
+        "Attempted": 2400,
+        "ContestDescription": "Business idea contests invite entrepreneurs to pitch innovative concepts to a panel of judges."
+    }
+    
+]
