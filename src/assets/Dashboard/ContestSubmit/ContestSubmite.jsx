@@ -4,7 +4,7 @@ import ContestSubmited from "./ContestSubmited";
 const ContestSubmite = () => {
     const submit = useLoaderData()
     return (
-        <div>
+        <div className="w-[1300px]">
             <h1 className="text-5xl text-blue-500 font-bold text-center my-5">Your submited Contest</h1>
             <div className="m-5 grid md:grid-cols-1 lg:grid-cols-1 g-5">
             {

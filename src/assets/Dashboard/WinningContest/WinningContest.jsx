@@ -6,7 +6,7 @@ const WinningContest = () => {
     const winning = useLoaderData()
     //console.log(winning)
     return (
-        <div>
+        <div className="w-[1250px] ml-14">
             <div className="flex items-center ml-96 my-5 space-x-2">
             <MdCelebration className="text-4xl text-orange-500"></MdCelebration>
             <h1 className="text-4xl font-bold uppercase text-blue-500"> Winners</h1>

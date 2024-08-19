@@ -2,98 +2,130 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Privider/AuthProvider";
-import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { imageUpload } from "../api/Index";
+import toast from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-    const axiosPublic = useAxiosPublic()
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-      } = useForm()
+    
+    
 
-      const { createUser , updateUserProfile } = useContext(AuthContext);
+      const { createUser ,signInWithGoogle, updateUserProfile } = useContext(AuthContext);
       const navigate = useNavigate()
 
+      const handleSubmit = async e =>{
+        e.preventDefault()
+    const form = e.target
+    const name = form.name.value
+    const email = form.email.value 
+    const password = form.password.value 
+    const image = form.image.files[0]
+   
+    try{
+      
+     const image_url = await imageUpload(image)
+      const result = await createUser(email,password)
+      console.log(result)
 
-      const onSubmit = data =>{
-         //console.log(data);
-         createUser(data.email,data.password)
-         .then(result =>{
-            const loggedUser = result.user;
-            //console.log(loggedUser);
-            updateUserProfile(data.name , data.photoURL)
-            .then(()=>{
-                const userInfo = {
-                    name:data.name,
-                    email:data.email
-                }
-                axiosPublic.post('users',userInfo)
-                .then(res => {
-                    if(res.data.insertedId){
-                        //console.log('user added to the database')
-                        reset();
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "User created successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                          });
-                          navigate('/')
-                    }
-                })
-               
-            })
-            .catch(error => console.log(error))
-         })
-        };
+      await updateUserProfile(name,image_url)
+      navigate('/')
+      toast.success('SignUp Successful') 
+        }catch(error){
+          console.log(error)
+          toast.error(error.message)
+        }
+    
+    }
 
+    const handleGoogleLogin= async () =>{
+        
+        try {
+          await signInWithGoogle()
+          navigate('/')
+          toast.success('SignUp Successful')
+        } catch(error) {
+          console.log(error)
+          toast.error(error.message)
+    
+        }
+      }
+   
     
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-base-200 pt-20">
         <div className="hero-content flex-col text-blue-500">
             <div className="text-center ">
             <h1 className="text-5xl font-bold ">Register Now...!</h1>
             </div>
             <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleSubmit(onSubmit)}  className="card-body">
-                <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Name</span>
-                </label>
-                <input type="text" placeholder="Your Name" {...register("name",{ required: true })} name="name" className="input input-bordered" />
-                {errors.name && <span className="text-red-600">This field is required</span>}
-                </div>
+            <form onSubmit={handleSubmit}  className="card-body">
+            <div>
+              <label htmlFor='email' className='block mb-2 text-sm'>
+                Name
+              </label>
+              <input
+                type='text'
+                name='name'
+                id='name'
+                placeholder='Enter Your Name Here'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                data-temp-mail-org='0'
+              />
+            </div>
 
 
-                <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Photo URL</span>
-                </label>
-                <input type="text" placeholder="Your Name" {...register("photoURL",{ required: true })}  className="input input-bordered" />
-                {errors.photoURL && <span className="text-red-600">This field is required</span>}
-                </div>
+            <div>
+              <label htmlFor='image' className='block mb-2 text-sm'>
+                Select Image:
+              </label>
+              <input
+                required
+                type='file'
+                id='image'
+                name='image'
+                accept='image/*'
+              />
+            </div>
+
+
+            <div>
+              <label htmlFor='email' className='block mb-2 text-sm'>
+                Email address
+              </label>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                required
+                placeholder='Enter Your Email Here'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                data-temp-mail-org='0'
+              />
+            </div>
 
               
 
-                <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Email</span>
+            <div>
+              <div className='flex justify-between'>
+                <label htmlFor='password' className='text-sm mb-2'>
+                  Password
                 </label>
-                <input type="email" placeholder="email" {...register("email",{ required: true })} name="email" className="input input-bordered" required />
-                {errors.email && <span className="text-red-600">This field is required</span>}
-                </div>
+              </div>
+              <input
+                type='password'
+                name='password'
+                autoComplete='new-password'
+                id='password'
+                required
+                placeholder='*******'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+              />
+            </div>
+
 
                 
                 <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Password</span>
-                </label>
-                <input type="password" placeholder="password" {...register("password",{ required: true })} name="password"  className="input input-bordered"required />
-                {errors.password && <span className="text-red-600">This field is required</span>}
+            
 
                 <label className="label">
                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -103,6 +135,9 @@ const Register = () => {
                 <input  className="btn bg-blue-500 text-white hover:bg-blue-700" type="submit" value="Sign Up" />
                 </div>
             </form>
+
+            <button  onClick={handleGoogleLogin} className="pl-40 text-3xl"><FaGoogle></FaGoogle></button>
+
                 
                 <p className="mx-8">Already have Account ? please 
             <Link to="/login">

@@ -5,7 +5,7 @@ const CreateContest = () => {
     const [contest] = useContests();
     return (
         <div>
-            <div>
+            <div className="w-[1260px]">
       <h1 className="text-5xl font-bold text-center text-blue-500 my-5">Create Contest</h1>
         <div className="overflow-x-auto">
         <table className="table bg-slate-200">

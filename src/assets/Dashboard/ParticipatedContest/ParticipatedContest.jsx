@@ -18,7 +18,7 @@ const ParticipatedContest = () => {
   return (
     <div>
   
-      <div>
+      <div className="w-[1250px]">
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             {/* head */}
@@ -27,14 +27,13 @@ const ParticipatedContest = () => {
                 <th>Transaction Id</th>
                 <th>email</th>
                 <th>Price</th>
-                <th>Amount</th>
                 <th>deadline</th>
 
               </tr>
             </thead>
             <tbody>
               {payments.map((payment , index) => <tr key={payment._id}>
-                <th>{index + 1}</th>
+                {/* <th>{index + 1}</th> */}
                 <td>{payment.transactionId}</td>
                 <td>{payment.email}</td>
                 <td>{payment.price}tk</td>

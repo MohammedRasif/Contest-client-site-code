@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import app from "../../firebase/firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
 import useAxiosPublic from "../../src/assets/hooks/useAxiosPublic"
+import axios from "axios";
 
 export const AuthContext = createContext(true)
 const auth = getAuth(app)
@@ -37,29 +38,67 @@ const AuthProvider = ({children}) => {
     }
 
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth,currentUser =>{
-            setUser(currentUser);
-            if(currentUser){
-                
-                const userInfo = {email:currentUser.email};
-                axiosPublic.post('/jwt',userInfo)
-                .then(res => {
-                    if(res.data.token){
-                        localStorage.setItem('access-token',res.data.token);
+      // Get token from server
+  const getToken = async email => {
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/jwt`,
+      { email },
+      { withCredentials: true }
+    )
+    return data
+  }
 
-                    }
-                })
-            }
-            else{
-                localStorage.removeItem('access-token');
-            }
-            setLoading(false)
+    
+     //save user
+  const saveUser = async user =>{
+    const currentUser ={
+      email:user?.email,
+      role:'guest',
+      status:'Verified'
+    }
+    const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/user`,currentUser)
+    return(data)
+  }
+
+    // onAuthStateChange
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+          setUser(currentUser)
+          if (currentUser) {
+            getToken(currentUser.email)
+            saveUser(currentUser)
+          }
+          setLoading(false)
         })
-        return () =>{
-            return unsubscribe
+        return () => {
+          return unsubscribe()
         }
-    },[axiosPublic])
+      }, [])
+
+
+    // useEffect(()=>{
+    //     const unsubscribe = onAuthStateChanged(auth,currentUser =>{
+    //         setUser(currentUser);
+    //         if(currentUser){
+    //             saveUser(currentUser)
+    //             const userInfo = {email:currentUser.email};
+    //             axiosPublic.post('/jwt',userInfo)
+    //             .then(res => {
+    //                 if(res.data.token){
+    //                     localStorage.setItem('access-token',res.data.token);
+
+    //                 }
+    //             })
+    //         }
+    //         else{
+    //             localStorage.removeItem('access-token');
+    //         }
+    //         setLoading(false)
+    //     })
+    //     return () =>{
+    //         return unsubscribe
+    //     }
+    // },[axiosPublic])
 
 
     const updateUserProfile = (name, photo) => {
@@ -68,19 +107,6 @@ const AuthProvider = ({children}) => {
           photoURL: photo,
         })
       }
-
-
-    
-
-
-
-
-
-
-
-
-
-
 
 
 

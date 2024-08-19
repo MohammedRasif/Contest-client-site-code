@@ -54,7 +54,7 @@ const AddContest = () => {
   };
   return (
     <div
-      className="hero min-h-full"
+      className="hero w-[1300px] min-h-full"
       style={{
         backgroundImage:
           "url(https://i.ibb.co/3y8QLL7/wp12016952.webp)",

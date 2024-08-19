@@ -1,10 +1,42 @@
 import { Link, NavLink } from "react-router-dom";
 import img from "../../../image/logo-removebg-preview.png"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Privider/AuthProvider";
+import HostRequestModal from "../Modal/HostRequestModal";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Navbar = () => {
+    const [isModalOpen , setIsModalOpen]=useState(false)
+    const axiosSecure = useAxiosSecure()
     const { user,logOut }=useContext(AuthContext)
+
+    const closeModal = () =>{
+        setIsModalOpen(false)
+    }
+    const HandleModal=async()=>{
+        console.log('i want to be a host')
+    try {
+      const currentUser ={
+        email:user?.email,
+        role:'guest',
+        status:'Requested'
+      }
+      const {data} = await axiosSecure.put(`/user`,currentUser)
+      console.log(data)
+      if(data.modifiedCount > 0){
+        toast.success('Success..! please wait for admin confirmation')
+      } else{
+        toast.success('please..! wait for admin approval')
+      }
+    }catch(error){
+      console.log(error)
+      toast.error(error.message )
+    }finally{
+      closeModal()
+    }
+    }
+
      const navLinks = <>
     <li> <NavLink to="/">Home</NavLink> </li>
     <li> <NavLink to="/allContest">All Contest </NavLink></li>
@@ -34,6 +66,14 @@ const Navbar = () => {
                 {navLinks}
                 </ul>
             </div>
+            <button
+                      // disabled={!user}
+                      onClick={()=>setIsModalOpen(true)}
+                      className='disabled:cursor-not-allowed  cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'
+                    >
+                      Host 
+             </button>
+            <HostRequestModal isOpen={isModalOpen} closeModal={closeModal} HandleModal={HandleModal}></HostRequestModal>
             <div className="navbar-end">
             {
                         user ?
