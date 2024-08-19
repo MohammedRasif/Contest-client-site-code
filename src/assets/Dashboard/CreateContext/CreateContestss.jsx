@@ -20,6 +20,13 @@ const CreateContestss = ({ contests }) => {
     };
     const res = await axiosSecure.post("/submited", allContestSubmited);
     console.log("submited saved", res.data);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Your Contest submit successfully",
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
 
   const handleDelete = (_id) => {
