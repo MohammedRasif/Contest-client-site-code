@@ -32,6 +32,7 @@ import CreateContest from './assets/Dashboard/CreateContext/CreateContest.jsx';
 import ContestSubmite from './assets/Dashboard/ContestSubmit/ContestSubmite.jsx';
 import Edit from './assets/Dashboard/Edit/Edit.jsx';
 import WinningContest from './assets/Dashboard/WinningContest/WinningContest.jsx';
+import Profile from './assets/Dashboard/Profile.jsx';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -75,7 +76,7 @@ const router = createBrowserRouter([
       {
         path:"/WinnerContest",
         element:<WinnerContest></WinnerContest>,
-        loader:()=>fetch('http://localhost:5000/winning')
+        loader:()=>fetch('https://movie-review-server-site.vercel.app/winning')
       }
       ,
       {
@@ -86,7 +87,7 @@ const router = createBrowserRouter([
       // {
       //   path:"/winners",
       //   element:<Winner></Winner>,
-      //   loader:()=>fetch('http://localhost:5000/winning')
+      //   loader:()=>fetch('https://movie-review-server-site.vercel.app/winning')
       // }
     ]
   },
@@ -109,10 +110,17 @@ const router = createBrowserRouter([
         element:<CreateContest></CreateContest>
       }
       ,
+      
+        {
+          path:'profile',
+          element:<Profile></Profile>
+        }
+      
+      ,
       {
         path:'contestSubmit',
         element:<ContestSubmite></ContestSubmite>,
-        loader:() =>fetch('http://localhost:5000/submited')
+        loader:() =>fetch('https://movie-review-server-site.vercel.app/submited')
       }
      ,
       {
@@ -128,7 +136,7 @@ const router = createBrowserRouter([
       {
         path:"winningContest",
         element:<WinningContest></WinningContest>,
-        loader:()=>fetch('http://localhost:5000/winning')
+        loader:()=>fetch('https://movie-review-server-site.vercel.app/winning')
       }
       ,
       //admin route

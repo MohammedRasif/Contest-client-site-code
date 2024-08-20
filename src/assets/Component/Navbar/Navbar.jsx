@@ -90,7 +90,7 @@ const Navbar = () => {
                                         <img src={user?.photoURL} className="h-20 w-20 rounded-full ml-14" alt="" />
                                          <p className="text-blue-500 text-center text-xl">{user?.displayName}</p>
                                          
-                                         <Link to="/dashboard/addContest"><h1 className="px-3 py-2 bg-gray-200 my-1 font-bold">My Profile</h1></Link>
+                                         <Link to="/dashboard/profile"><h1 className="px-3 py-2 bg-gray-200 my-1 font-bold">My Profile</h1></Link>
                                          
                                         <li><button onClick={logOut} className="btn text-white  bg-blue-500 hover:bg-blue-950 hover:text-white">Logout</button></li>
                                     </ul>

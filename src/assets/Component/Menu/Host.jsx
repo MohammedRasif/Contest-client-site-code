@@ -23,6 +23,17 @@ const HostMenu = () => {
         label="Contest-Submit"
         address="/dashboard/contestSubmit"
       />
+
+<MenuItem
+        icon={FaPager}
+        label='Participated-Contest'
+        address='/dashboard/participatedContest'
+      />
+      <MenuItem
+        icon={FaPager}
+        label='Winning-Contest'
+        address='/dashboard/winningContest'
+      />
     </>
   );
 };
