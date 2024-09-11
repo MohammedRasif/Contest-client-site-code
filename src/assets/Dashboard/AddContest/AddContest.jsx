@@ -30,7 +30,8 @@ const AddContest = () => {
             description:data.description,
             category:data.category,
             price: parseFloat(data.price),
-            image: res.data.data.display_url
+            image: res.data.data.display_url,
+            status:'pending',
 
         }
       const contestRes = await axiosSecure.post('/contest',contestItem);
