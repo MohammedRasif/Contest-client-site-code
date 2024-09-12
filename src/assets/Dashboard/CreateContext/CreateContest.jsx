@@ -12,7 +12,7 @@ const CreateContest = () => {
           <thead>
             <tr>
               <th>Image</th>
-              <th className="pl-40">Name</th>
+              <th className="text-center">Name</th>
               <th className="pl-24">Status</th>
             </tr>
           </thead>
