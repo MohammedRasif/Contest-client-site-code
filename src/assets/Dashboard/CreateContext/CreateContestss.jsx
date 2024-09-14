@@ -14,7 +14,7 @@ const CreateContestss = ({ contests }) => {
     const newStatus = "accepted";
     const updateDetails = { status: newStatus };
 
-    fetch(`http://localhost:5000/contest/${_id}`, {
+    fetch(`https://movie-review-server-site.vercel.app/contest/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

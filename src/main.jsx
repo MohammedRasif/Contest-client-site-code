@@ -76,7 +76,7 @@ const router = createBrowserRouter([
       {
         path:"/WinnerContest",
         element:<WinnerContest></WinnerContest>,
-        loader:()=>fetch('http://localhost:5000/winning')
+        loader:()=>fetch('https://movie-review-server-site.vercel.app/winning')
       }
       ,
       {
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
       // {
       //   path:"/winners",
       //   element:<Winner></Winner>,
-      //   loader:()=>fetch('http://localhost:5000/winning')
+      //   loader:()=>fetch('https://movie-review-server-site.vercel.app/winning')
       // }
     ]
   },
@@ -108,7 +108,7 @@ const router = createBrowserRouter([
       {
         path:'CreateContest',
         element:<CreateContest></CreateContest>,
-        loader:() =>fetch('http://localhost:5000/contest')
+        loader:() =>fetch('https://movie-review-server-site.vercel.app/contest')
       }
       ,
       
@@ -121,7 +121,7 @@ const router = createBrowserRouter([
       {
         path:'contestSubmit',
         element:<ContestSubmite></ContestSubmite>,
-        loader:() =>fetch('http://localhost:5000/submited')
+        loader:() =>fetch('https://movie-review-server-site.vercel.app/submited')
       }
      ,
       {
@@ -137,7 +137,7 @@ const router = createBrowserRouter([
       {
         path:"winningContest",
         element:<WinningContest></WinningContest>,
-        loader:()=>fetch('http://localhost:5000/winning')
+        loader:()=>fetch('https://movie-review-server-site.vercel.app/winning')
       }
       ,
       //admin route
