@@ -4,7 +4,7 @@ import AllContestss from "./AllContestss";
 const AllContestPage = () => {
     const [contest,setContest] = useState([]);
     useEffect(() =>{
-        fetch('https://movie-review-server-site.vercel.app/allContests')
+        fetch('http://localhost:5000/allContests')
         .then(res => res.json())
         .then(data => setContest(data))
     },[])

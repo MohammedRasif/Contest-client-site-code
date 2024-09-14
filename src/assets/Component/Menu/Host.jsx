@@ -5,34 +5,33 @@ import { GoFileSubmodule } from "react-icons/go";
 const HostMenu = () => {
   return (
     <>
-    
-
-    {/* host */}
+      {/* host */}
 
       <MenuItem
         icon={FaPager}
-         label="Add-Contest"
+        label="Add-Contest"
         address="/dashboard/addContest"
       />
-      <MenuItem 
-      icon={IoCreateSharp} 
-     label="Create-Contest" 
-      address="/dashboard/CreateContest" />
+      <MenuItem
+        icon={IoCreateSharp}
+        label="Create-Contest"
+        address="/dashboard/CreateContest"
+      />
       <MenuItem
         icon={GoFileSubmodule}
         label="Contest-Submit"
         address="/dashboard/contestSubmit"
       />
 
-<MenuItem
+      <MenuItem
         icon={FaPager}
-        label='Participated-Contest'
-        address='/dashboard/participatedContest'
+        label="Participated-Contest"
+        address="/dashboard/participatedContest"
       />
       <MenuItem
         icon={FaPager}
-        label='Winning-Contest'
-        address='/dashboard/winningContest'
+        label="Winning-Contest"
+        address="/dashboard/winningContest"
       />
     </>
   );

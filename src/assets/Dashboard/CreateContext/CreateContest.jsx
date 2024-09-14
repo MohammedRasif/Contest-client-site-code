@@ -1,8 +1,13 @@
+import { useLoaderData } from "react-router-dom";
 import useContests from "../../hooks/useContests";
 import CreateContestss from "./CreateContestss"; // Import Route 2 Component
+import useAuth from "../../hooks/useAuth";
 
 const CreateContest = () => {
-  const [contest] = useContests(); // Fetch contests using custom hook
+  const contests  = useLoaderData(); 
+  const {user} = useAuth()
+  console.log(contests); 
+
 
   return (
     <div className="w-[1260px]">
@@ -17,8 +22,8 @@ const CreateContest = () => {
             </tr>
           </thead>
           <tbody>
-            {contest.map((contests) => (
-              <CreateContestss key={contests._id} contests={contests} />
+            {contests.map((contest) => (
+              <CreateContestss key={contest._id} user={user} contests={contest} />
             ))}
           </tbody>
         </table>

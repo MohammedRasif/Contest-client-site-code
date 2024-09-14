@@ -7,11 +7,36 @@ import { GoFileSubmodule } from "react-icons/go";
 const AdminMenu = () => {
   return (
     <div>
-        
+      {/* host */}
 
-        
+      <MenuItem
+        icon={FaPager}
+        label="Add-Contest"
+        address="/dashboard/addContest"
+      />
+      <MenuItem
+        icon={IoCreateSharp}
+        label="Create-Contest"
+        address="/dashboard/CreateContest"
+      />
+      <MenuItem
+        icon={GoFileSubmodule}
+        label="Contest-Submit"
+        address="/dashboard/contestSubmit"
+      />
 
-        {/* admin  */}
+      <MenuItem
+        icon={FaPager}
+        label="Participated-Contest"
+        address="/dashboard/participatedContest"
+      />
+      <MenuItem
+        icon={FaPager}
+        label="Winning-Contest"
+        address="/dashboard/winningContest"
+      />
+
+      {/* admin  */}
       <MenuItem
         icon={FaUserCog}
         label="Manage Users"
