@@ -8,7 +8,7 @@ const useContests = () => {
         
         queryFn:async()=>{
             const res = await axiosSecure.get('/contest')
-            //console.log(res)
+            console.log(res)
             return res.data;
         }
         

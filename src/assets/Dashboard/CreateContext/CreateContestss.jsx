@@ -1,10 +1,12 @@
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useUsers from "../../hooks/useUsers";
 
-const CreateContestss = ({ contests, user }) => {
+const CreateContestss = ({ contests }) => {
   const { _id, image, name, status } = contests;
   const axiosSecure = useAxiosSecure();
+  const {theUser} = useUsers()
 
   // Handle Contest Submission (Approval)
   const handleUpdateStatus = (event) => {
@@ -13,9 +15,9 @@ const CreateContestss = ({ contests, user }) => {
     const updateDetails = { status: newStatus };
 
     fetch(`http://localhost:5000/contest/${_id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       body: JSON.stringify(updateDetails),
     })
@@ -23,10 +25,10 @@ const CreateContestss = ({ contests, user }) => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           Swal.fire({
-            title: 'Success!',
-            text: 'Contest updated successfully',
-            icon: 'success',
-            confirmButtonText: 'Cool',
+            title: "Success!",
+            text: "Contest updated successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
           });
         }
       })
@@ -36,28 +38,26 @@ const CreateContestss = ({ contests, user }) => {
   // Handle Contest Deletion
   const handleDelete = (_id) => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'This action cannot be undone!',
-      icon: 'warning',
+      title: "Are you sure?",
+      text: "This action cannot be undone!",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/contest/${_id}`);
         if (res.data.deletedCount > 0) {
-          Swal.fire('Deleted!', 'Contest has been deleted.', 'success');
+          Swal.fire("Deleted!", "Contest has been deleted.", "success");
         }
       }
     });
   };
 
-  // Determine if the contest status is 'accepted'
-  const isAccepted = status === 'accepted';
+  const isAccepted = status === "accepted";
 
-  // Check if the user is an admin
-  const isAdmin = user && user.role === 'admin';
+  // const isAdmin = user && user.role === "admin";
 
   return (
     <tr>
@@ -80,15 +80,15 @@ const CreateContestss = ({ contests, user }) => {
 
       {/* Action buttons */}
       <td className="text-center space-x-8">
-        
+        {theUser?.role==='admin' && (
           <button
             onClick={handleUpdateStatus}
             className="btn btn-ghost btn-xs"
-            disabled={isAccepted}  
+            disabled={isAccepted}
           >
             {isAccepted ? "Approved" : "Approve"}
           </button>
-        
+        )}
 
         <Link to={`/dashboard/edit/${_id}`}>
           <button className="btn btn-ghost btn-xs" disabled={isAccepted}>

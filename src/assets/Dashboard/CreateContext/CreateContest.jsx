@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 
 const CreateContest = () => {
   const contests  = useLoaderData(); 
-  const {user} = useAuth()
+ 
   console.log(contests); 
 
 
@@ -23,7 +23,7 @@ const CreateContest = () => {
           </thead>
           <tbody>
             {contests.map((contest) => (
-              <CreateContestss key={contest._id} user={user} contests={contest} />
+              <CreateContestss key={contest._id}  contests={contest} />
             ))}
           </tbody>
         </table>
