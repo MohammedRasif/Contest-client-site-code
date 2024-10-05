@@ -26,6 +26,6 @@ A web application for participating in various contests, such as design, article
 <h4>* Dashboard: Monitor contest details and participation history.</h4>
 <h4>* View Winners: After a contest concludes, view the top 3 winners.</h4>
 
-<h5>**Update**</h5>
-<h3>If you go to the details page of all the contests shown on the website. The contests cna be shared on various social media with jast one click like whatsapp , telegram ect ect</h3>
+<h2>**Update**</h2>
+<h4>If you go to the details page of all the contests shown on the website. The contests cna be shared on various social media with jast one click like whatsapp , telegram ect ect</h4>
 
