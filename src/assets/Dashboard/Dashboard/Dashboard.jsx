@@ -39,7 +39,7 @@ const Sidebar = () => {
       
        <div className="w-72 min-h-screen bg-blue-400 ">
        <img src={user?.photoURL} className="h-44 rounded-full border border-x-4 border-y-4 m-10" alt="" />
-             <h1 className="ml-14  text-4xl text-white ">{user?.displayName}</h1>
+             <h1 className="ml-14  text-xl text-white ">{user?.displayName}</h1>
              <h1 className="ml-10 mb-6 text-white">Welcome to your profile</h1>
        <div>
           

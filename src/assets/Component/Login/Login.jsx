@@ -19,9 +19,7 @@ const Login = () => {
         const email = form.email.value 
         setEmail(email)
         const password = form.password.value 
-       
-    
-    
+          
         try{
          
           await signIn(email,password)

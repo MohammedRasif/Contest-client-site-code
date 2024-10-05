@@ -16,7 +16,7 @@ const WinnerContest = () => {
             "url(https://i.ibb.co/fr1H5ns/blob-scene-haikei.png)",
         }}
       >
-        <div className=""></div>
+     
         <div className=" text-center ">
           <div className="">
             <h1 className="mb-5 text-8xl text-orange-400 font-bold">
@@ -29,10 +29,10 @@ const WinnerContest = () => {
               <div className="mt-20">
                 <img
                   src={img2}
-                  className="rounded-full border-x-8 ml-24 border-y-8 border-orange-400 h-64 w-64"
+                  className="rounded-full border-x-8 ml-56 border-y-8 border-orange-400 h-64 w-64"
                   alt=""
                 />
-                <h1 className="text-orange-400 ml-20 text-xl font-bold">
+                <h1 className="text-orange-400 ml-56 text-xl font-bold">
                   {" "}
                   Business Idea Concerts
                 </h1>
@@ -60,7 +60,7 @@ const WinnerContest = () => {
                 </h1>
               </div>
             </div>
-            <p className="mb-5 text-orange-400 mx-96 mt-5">
+            <p className="mb-5  text-orange-400 mx-96 mt-5">
               We are thrilled to announce the winner of our latest contest!
               Congratulations to Winner's Name, whose outstanding creativity
               and dedication truly impressed us all. Winner's Name stood out
