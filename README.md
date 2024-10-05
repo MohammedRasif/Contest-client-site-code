@@ -18,11 +18,14 @@ A web application for participating in various contests, such as design, article
 <h4>Carousel: Swiper.js</h4>
 
 
-<h3>6. How to Use the App</h3>
+<h3>5. How to Use the App</h3>
 <h4>* Sign Up / Log In: Create an account or log in to your existing account.</h4>
 <h4>* View Contests: Navigate through different contest categories.</h4>
 <h4>* Participate: Pay the entry fee and join a contest.</h4>
 <h4>* Create a Contest: Request to create a contest (admin approval required).</h4>
 <h4>* Dashboard: Monitor contest details and participation history.</h4>
 <h4>* View Winners: After a contest concludes, view the top 3 winners.</h4>
+
+<h5>**Update**</h5>
+<h3>If you go to the details page of all the contests shown on the website. The contests cna be shared on various social media with jast one click like whatsapp , telegram ect ect</h3>
 
